@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+    <script>
+        // function increase(number, callback) {
+        //     setTimeout(() => {
+        //         const result = number + 10;
+        //         if (callback) {
+        //             callback(result);
+        //         }
+        //     }, 100)
+        // }
+
+        // document.write('지옥 시작');
+        // increase(0, result => {
+        //     document.write(result, '<br>');
+        //     increase(result, result => {
+        //         document.write(result, '<br>');
+        //         increase(result, result => {
+        //             document.write(result, '<br>');
+        //             increase(result, result => {
+        //                 document.write(result, '<br>');
+        //                 increase(result, result => {
+        //                     document.write(result, '<br>');
+        //                     increase(result, result => {
+        //                         document.write(result, '<br>');
+        //                         increase(result, result => {
+        //                             document.write(result, '<br>');
+        //                             increase(result, result => {
+        //                                 document.write(result, '<br>');
+        //                                 increase(result, result => {
+        //                                     document.write(result, '<br>');
+        //                                     increase(result, result => {
+        //                                         document.write(result, '<br>');
+        //                                         increase(result, result => {
+        //                                             document.write(result, '<br>');
+        //                                             increase(result, result => {
+        //                                                 document.write(result, '<br>');
+        //                                                 increase(result, result => {
+        //                                                     document.write(result, '<br>');
+        //                                                     increase(result, result => {
+        //                                                         document.write(result, '<br>');
+        //                                                         increase(result, result => {
+        //                                                             document.write(result, '<br>');
+        //                                                             increase(result, result => {
+        //                                                                 document.write(result, '<br>');
+        //                                                                 increase(result, result => {
+        //                                                                     document.write(result, '<br>');
+        //                                                                     increase(result, result => {
+        //                                                                         document.write(result, '<br>');
+        //                                                                         increase(result, result => {
+        //                                                                             document.write(result, '<br>');
+        //                                                                             increase(result, result => {
+        //                                                                                 document.write(result, '<br>');
+        //                                                                                 increase(result, result => {
+        //                                                                                     document.write(result, '<br>');
+        //                                                                                     increase(result, result => {
+        //                                                                                         document.write(result, '<br>');
+        //                                                                                         increase(result, result => {
+        //                                                                                             document.write(result, '<br>');
+        //                                                                                             increase(result, result => {
+        //                                                                                                 document.write(result, '<br>');
+        //                                                                                                 increase(result, result => {
+        //                                                                                                     document.write(result, '<br>');
+        //                                                                                                     increase(result, result => {
+        //                                                                                                         document.write(result, '<br>');
+        //                                                                                                         increase(result, result => {
+        //                                                                                                             document.write(result, '<br>');
+        //                                                                                                             increase(result, result => {
+        //                                                                                                                 document.write(result, '<br>');
+        //                                                                                                                 increase(result, result => {
+        //                                                                                                                     document.write(result, '<br>');
+        //                                                                                                                     increase(result, result => {
+        //                                                                                                                         document.write(result, '<br>');
+        //                                                                                                                         increase(result, result => {
+        //                                                                                                                             document.write(result, '<br>');
+        //                                                                                                                             increase(result, result => {
+        //                                                                                                                                 document.write(result, '<br>');
+        //                                                                                                                                 increase(result, result => {
+        //                                                                                                                                     document.write(result, '<br>');
+        //                                                                                                                                     increase(result, result => {
+        //                                                                                                                                         document.write(result, '<br>');
+        //                                                                                                                                         increase(result, result => {
+        //                                                                                                                                             document.write(result, '<br>');
+        //                                                                                                                                             increase(result, result => {
+        //                                                                                                                                                 document.write(result, '<br>');
+        //                                                                                                                                                 increase(result, result => {
+        //                                                                                                                                                     document.write(result, '<br>');
+        //                                                                                                                                                     increase(result, result => {
+        //                                                                                                                                                         document.write(result, '<br>');
+        //                                                                                                                                                         document.write('지옥 완료');
+        //                                                                                                                                                     });
+        //                                                                                                                                                 });
+        //                                                                                                                                             });
+        //                                                                                                                                         });
+        //                                                                                                                                     });
+        //                                                                                                                                 });
+        //                                                                                                                             });
+        //                                                                                                                         });
+        //                                                                                                                     });
+        //                                                                                                                 });
+        //                                                                                                             });
+        //                                                                                                         });
+        //                                                                                                     });
+        //                                                                                                 });
+        //                                                                                             });
+        //                                                                                         });
+        //                                                                                     });
+        //                                                                                 });
+        //                                                                             });
+        //                                                                         });
+        //                                                                     });
+        //                                                                 });
+        //                                                             });
+        //                                                         });
+        //                                                     });
+        //                                                 });
+        //                                             });
+        //                                         });
+        //                                     });
+        //                                 });
+        //                             });
+        //                         });
+        //                     });
+        //                 });
+        //             });
+        //         });
+        //     });
+        // });
+
+        // function increase_prom(number) {
+        //     const promise = new Promise((resolve, reject) => {
+        //         // resolve는 .then() 메서드 호출
+        //         // reject는 .catch() 메서드 호출
+        //         setTimeout(() => {
+        //             const result = number + 10;
+        //             if (result > 100) {
+        //                 const e = new Error('Number is Too Big');
+        //                 return reject(e);
+        //             }
+        //             resolve(result);
+        //         }, 100);
+        //     });
+        //     return promise;
+        // }
+        // // 위의 함수처럼 실행을 위해 생성된 함수를 실행자(excutor)라고 함
+
+        // increase_prom(0)
+        //     .then(number => {
+        //         document.write(number, '<br>');
+        //         return increase_prom(number);
+        //     })
+        //     .then(number => {
+        //         document.write(number, '<br>');
+        //         return increase_prom(number);
+        //     })
+        //     .then(number => {
+        //         document.write(number, '<br>');
+        //         return increase_prom(number);
+        //     })
+        //     .then(number => {
+        //         document.write(number, '<br>');
+        //         return increase_prom(number);
+        //     })
+        //     .then(number => {
+        //         document.write(number, '<br>');
+        //         return increase_prom(number);
+        //     })
+        //     .then(number => {
+        //         document.write(number, '<br>');
+        //         return increase_prom(number);
+        //     })
+        //     .then(number => {
+        //         document.write(number, '<br>');
+        //         return increase_prom(number);
+        //     })
+        //     .then(number => {
+        //         document.write(number, '<br>');
+        //         return increase_prom(number);
+        //     })
+        //     .then(number => {
+        //         document.write(number, '<br>');
+        //         return increase_prom(number);
+        //     })
+        //     .then(number => {
+        //         document.write(number, '<br>');
+        //         return increase_prom(number);
+        //     })
+        //     .catch((e) => {
+        //         document.write(e, '<br>');
+        //     })
+
+        // async function f() {
+        //     let promise = new Promise((resolve, reject) => {
+        //         setTimeout(() => resolve('완료!'), 1200)
+        //         // 3900 이후로 완료 메세지 출력
+        //     });
+
+        //     let result = await promise;
+
+        //     alert('완료!');
+        // }
+
+        // f();
+
+        function increase_async(number) {
+            const promise = new Promise((resolve, reject) => {
+                // resolve는 .then() 메서드 호출
+                // reject는 .catch() 메서드 호출
+                setTimeout(() => {
+                    const result = number + 10;
+                    if (result > 100) {
+                        const e = new Error('Number is Too Big');
+                        return reject(e);
+                    }
+                    resolve(result);
+                }, 100);
+            });
+            return promise;
+        }
+        // 위의 함수처럼 실행을 위해 생성된 함수를 실행자(excutor)라고 함
+
+        async function runTasks() {
+            try {
+                let result = await increase_async(0);
+                document.write(result, '<br>');
+                result = await increase_async(result);
+                document.write(result, '<br>');
+                result = await increase_async(result);
+                document.write(result, '<br>');
+                result = await increase_async(result);
+                document.write(result, '<br>');
+                result = await increase_async(result);
+                document.write(result, '<br>');
+                result = await increase_async(result);
+                document.write(result, '<br>');
+                result = await increase_async(result);
+                document.write(result, '<br>');
+                result = await increase_async(result);
+                document.write(result, '<br>');
+                result = await increase_async(result);
+                document.write(result, '<br>');
+                result = await increase_async(result);
+                document.write(result, '<br>');
+                result = await increase_async(result);
+                document.write(result, '<br>');
+            } catch (e) {
+                document.write(e);
+            }
+        }
+
+        runTasks();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

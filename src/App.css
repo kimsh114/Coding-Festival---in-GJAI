@@ -1,0 +1,11 @@
+::selection {
+  color: #282c34;
+  background-color: #61dafb;
+}
+
+body {
+  background-color: #282c34;
+  /* font-size: calc(10px + 2vmin); */
+  /* text-align: center; */
+  text-decoration: none;
+}
